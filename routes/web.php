@@ -11,26 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@inicio');
 
 
 Route::get('hola', function () {
     return "hola";
 });
 
-Route::get('fotos',function(){
-  return view('fotos');
-})->name('foto');
+Route::get('fotos',"PagesController@fotos")->name('foto');
 
-Route::get('blog',function(){
-  return view('blog');
-})->name('noticias');
+Route::get('blog','PagesController@noticias')->name('noticias');
 
-Route::get('nosotros/{nombre?}',function($nombre = null){
-
-    $equipo = ['David','Juan','Jose'];
-//  return view('nosotros',['equipo' => $equipo]);
-    return view('nosotros',compact('equipo','nombre'));
-})->name('nosotros');
+Route::get('nosotros/{nombre?}','PagesController@nosotros')->name('nosotros');
